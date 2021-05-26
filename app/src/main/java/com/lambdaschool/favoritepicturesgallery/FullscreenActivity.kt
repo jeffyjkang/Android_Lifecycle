@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
@@ -56,6 +57,8 @@ class FullscreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Log.i("lifecycle", "${this.javaClass.simpleName} onCreate")
+
         val stringArray = arrayOfNulls<String>(5)
 
         setContentView(R.layout.activity_fullscreen)
@@ -75,6 +78,36 @@ class FullscreenActivity : AppCompatActivity() {
 
         val intent = intent
         (mContentView as ImageView).setImageURI(Uri.parse(intent.getStringExtra("image")))
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onResume")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onRestart")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onDestroy")
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

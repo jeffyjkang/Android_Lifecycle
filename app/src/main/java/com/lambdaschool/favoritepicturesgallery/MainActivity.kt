@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val context = this
+        Log.i("lifecycle", "${this.javaClass.simpleName} onCreate")
 
         imageList = ArrayList()
 
@@ -53,6 +54,36 @@ class MainActivity : AppCompatActivity() {
         listAdapter = ImageListAdapter(imageList, this)
         layout_list.adapter = listAdapter
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onResume")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onRestart")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("lifecycle", "${this.javaClass.simpleName} onDestroy")
     }
 
     private fun refreshListView() {
